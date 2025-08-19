@@ -1,3 +1,6 @@
-<p>home works!</p>
 <app-greeting [message]="homeMessage()"/>
-<input type="text" (keyup)="keyUpHandler($event)"/>
+<input 
+    placeholder="Type something here..."
+    type="text"
+    (keyup)="keyUpHandler($event)"/>
+<app-counter />
