@@ -1,9 +1,69 @@
 header {
-    background-color: #333;   // dark gray background
-    color: #fff;              // white text inside the header
-    display: flex;            // make header a flex container
-    justify-content: space-between; // push children to opposite sides (left & right)
-    align-items: center;      // vertically center the children
-    padding-inline: 16px;     // horizontal padding (left & right = 16px)
-    padding-block: 8px;       // vertical padding (top & bottom = 8px)
+    background-color: #4285F4; /* A bright blue similar to the image */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px; /* Adjust padding for a more spacious look */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+
+    nav {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    span { /* This is your "Logo" text */
+        font-size: 2.2rem; /* Larger font size for the logo */
+        font-weight: bold;
+        color: #fff; /* Ensure logo is white */
+        margin-right: 40px; /* Space between logo and nav items */
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+    }
+
+    li {
+        margin-left: 30px; /* Increased space between nav items */
+    }
+
+    a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: normal; /* Normal weight for regular links */
+        font-size: 1.1rem; /* Slightly larger font for nav links */
+        padding-bottom: 5px; /* Space for the underline */
+        position: relative; /* Needed for the underline effect */
+        transition: color 0.3s ease;
+
+        &::after { /* Underline effect for active/hover */
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #fff; /* White underline */
+            transition: width 0.3s ease;
+        }
+
+        &:hover::after,
+        &.active::after { /* Active class from routerLinkActive */
+            width: 100%; /* Expand underline on hover and for active link */
+        }
+
+        &:hover {
+            color: #f0f0f0; /* Slightly dim on hover if needed, or keep white */
+        }
+
+        &.active {
+            font-weight: bold; /* Bold text for active link */
+        }
+    }
 }
