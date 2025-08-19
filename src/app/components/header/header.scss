@@ -1,0 +1,9 @@
+header {
+    background-color: #333;   // dark gray background
+    color: #fff;              // white text inside the header
+    display: flex;            // make header a flex container
+    justify-content: space-between; // push children to opposite sides (left & right)
+    align-items: center;      // vertically center the children
+    padding-inline: 16px;     // horizontal padding (left & right = 16px)
+    padding-block: 8px;       // vertical padding (top & bottom = 8px)
+}

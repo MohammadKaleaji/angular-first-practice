@@ -8,11 +8,13 @@ import { Home } from './home/home';
   imports: [RouterOutlet, Header, Home],
   template: `
     <app-header />
-    <app-home />
+    <main>
+      <app-home />
+    </main>
   `,
   styles: [
-    `h2 {
-      color: red;
+    `main{
+      padding: 16px;
     }`
   ],
 })
