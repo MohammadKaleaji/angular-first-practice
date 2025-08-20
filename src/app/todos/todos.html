@@ -2,6 +2,9 @@
     Todos List From API
 </h3>
 
+@if (todoItems().length === 0) {
+    <p>Loading todos...</p>
+}
 
 <ul class="todos-list">
     @for (todo of todoItems().slice(0, 10); track todo.id) {

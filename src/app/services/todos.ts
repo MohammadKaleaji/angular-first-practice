@@ -24,7 +24,7 @@ export class Todos {
 
   ]
   */
-  getTodosfroAPI(){
+  getTodosfromAPI(){
     const url = 'https://jsonplaceholder.typicode.com/todos';
     return this.http.get<Array<Todo>>(url);
   }

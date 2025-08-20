@@ -16,7 +16,7 @@ export class Todos implements OnInit{
   todoItems = signal<Array<Todo>>([]);
 
   ngOnInit(): void {
-    this.todosService.getTodosfroAPI().pipe(
+    this.todosService.getTodosfromAPI().pipe(
       catchError((error) => {
         console.error('Error fetching todos:', error);
         return of([]);
