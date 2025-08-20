@@ -1,36 +1,41 @@
-import { Component, inject, OnInit, signal } from '@angular/core'; // Import OnInit
+import { Component, inject, OnInit, signal, computed } from '@angular/core';
+import { NgClass, TitleCasePipe } from '@angular/common';
 import { Todos as TodosService } from '../services/todos';
 import { Todo } from '../model/todo.type';
 import { catchError, of } from 'rxjs';
-import { NgClass } from '@angular/common'; // Import NgClass
 
 @Component({
   selector: 'app-todos',
-  imports: [NgClass], // Add NgClass to imports array
+  standalone: true,
+  imports: [NgClass, TitleCasePipe],
   templateUrl: './todos.html',
-  styleUrl: './todos.scss'
+  styleUrls: ['./todos.scss'],
 })
-export class Todos implements OnInit{
-  // Correctly inject the TodosService, using its alias
-  todosService = inject(TodosService);
-  todoItems = signal<Array<Todo>>([]);
+export class Todos implements OnInit {
+  private todosService = inject(TodosService);
+
+  todoItems = signal<Todo[]>([]);
+  searchTerm = signal<string>('');
+
+  // live-filtered list
+  filteredTodos = computed(() => {
+    const q = this.searchTerm().trim().toLowerCase();
+    const list = this.todoItems();
+    return q ? list.filter(t => t.title.toLowerCase().includes(q)) : list;
+  });
 
   ngOnInit(): void {
     this.todosService.getTodosfromAPI().pipe(
       catchError((error) => {
         console.error('Error fetching todos:', error);
-        return of([]);
+        return of([] as Todo[]);
       })
-    ).subscribe((todos) => {
-      this.todoItems.set(todos);
-    });
+    ).subscribe((todos) => this.todoItems.set(todos));
   }
 
   toggleCompletion(id: number): void {
     this.todoItems.update(todos =>
-      todos.map(todo =>
-        todo.id === id ? { ...todo, completed: !todo.completed } : todo
-      )
+      todos.map(t => t.id === id ? { ...t, completed: !t.completed } : t)
     );
   }
 }
