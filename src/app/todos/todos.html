@@ -4,13 +4,20 @@
   <p>Loading todos...</p>
 }
 
-<label for="search">Filter Todos</label>
-<input
-  id="search"
-  type="text"
-  #searchBox
-  placeholder="Search todos"
-  (input)="searchTerm.set(searchBox.value)" />
+<form class="search-form" autocomplete="off" (submit)="$event.preventDefault()">
+  <label for="search">🔍 Filter Todos</label>
+  <div class="search-bar">
+    <input
+      id="search"
+      type="text"
+      #searchBox
+      placeholder="Type to search todos..."
+      (input)="searchTerm.set(searchBox.value)" />
+    <button type="submit">
+      Search
+    </button>
+  </div>
+</form>
 
 <ul class="todos-list">
   @for (todo of filteredTodos().slice(0, 10); track todo.id) {
