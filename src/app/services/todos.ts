@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Todo } from '../model/todo.type';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Todos {
+  http = inject(HttpClient);
   todoItems : Array<Todo> = [
     {
       id: 1, // THE UNIQUE ID
