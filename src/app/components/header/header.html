@@ -1,9 +1,11 @@
 <header>
     <nav>
         <span>Kaleaji's - {{title()}}</span>
-        <ul>
-            <li><a routerLink="/">Home</a></li>
-            <li><a routerLink="/todos">Todos</a></li>
-        </ul>
+        <div class="nav-actions">
+            <ul>
+                <li><a routerLink="/todos">Todos</a></li>
+            </ul>
+            <app-theme-toggle></app-theme-toggle> <!-- Add the theme toggle component -->
+        </div>
     </nav>
 </header>

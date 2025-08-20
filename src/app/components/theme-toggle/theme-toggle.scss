@@ -1,0 +1,28 @@
+.theme-toggle {
+  background: none;
+  border: 2px solid var(--text-primary);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+
+  &:hover {
+    background-color: var(--text-primary);
+    color: var(--bg-primary);
+    transform: scale(1.1);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  .theme-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+  }
+}

@@ -1,10 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+/* CSS Custom Properties for Theming */
+:root {
+  /* Light Theme Colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --header-bg: #4285F4;
+  --header-text: #ffffff;
+  --todo-bg: #ffffff;
+  --todo-hover: #f9f9f9;
+  --search-bg: #ffffff;
+  --button-bg: #4285F4;
+  --button-hover: #3367d6;
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --border-color: #444444;
+  --header-bg: #1e3a8a;
+  --header-text: #ffffff;
+  --todo-bg: #2d2d2d;
+  --todo-hover: #3d3d3d;
+  --search-bg: #2d2d2d;
+  --button-bg: #1e3a8a;
+  --button-hover: #1e40af;
+}
+
+/* Apply theme variables to base elements */
 html,
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 * {
   outline: none;
+  box-sizing: border-box;
+}
+
+/* Smooth transitions for theme changes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
