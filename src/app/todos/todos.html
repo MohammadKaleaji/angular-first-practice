@@ -1,3 +1,16 @@
-@for (todo of todoItems(); track todo.id) {
-    <p>{{todo.title}}</p>
-}
+<h3>
+    Todos List From API
+</h3>
+
+
+<ul class="todos-list">
+    @for (todo of todoItems().slice(0, 10); track todo.id) {
+        <li class="todo-item" [ngClass]="{ 'completed': todo.completed }">
+            <input
+                type="checkbox"
+                [checked]="todo.completed"
+                (change)="toggleCompletion(todo.id)" /> <!-- Add change event handler -->
+            <h4>{{todo.title}}</h4>
+        </li>
+    }
+</ul>
